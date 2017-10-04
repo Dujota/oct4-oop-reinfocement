@@ -14,6 +14,11 @@ class Location
     return new_location
   end
 
+  def self.all
+    @@stops
+  end
+
+
 end
 
 

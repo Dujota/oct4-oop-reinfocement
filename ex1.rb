@@ -1,24 +1,14 @@
-class Location
-
-  attr_accessor :name
-
-  def initiate(name)
-    @name = name
-  end
-
-end
-
-
-
-class Trip < Location
-
+class Trip
   # This will be an array of Location instances:
   @@stops = []
 
-  attr_accessor :name
+  def initiate
+  end
 
-  def initiate(name)
-    @name = name
+  def self.create(name)
+    new_location = Location.new(name)
+    @@stops << new_location
+    return new_location
   end
 
   def self.all
@@ -33,14 +23,20 @@ class Trip < Location
   end
 
  # define a method that lets you add locations to the trips list of destinations
-  def self.create(name)
-    new_location = Location.new(name)
-    @@stops << new_location
-    return new_location
-  end
+
 end
 
-trip = Trip.new("October trip")
+class Location < Trip
+
+  attr_accessor :name
+
+  def initiate(name)
+    @name = name
+  end
+
+end
+
+# Trip.new
 Trip.create("Ottawa")
 Trip.create("Montreal")
 Trip.create("Quebec City")
